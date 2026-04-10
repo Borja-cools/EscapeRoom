@@ -50,8 +50,9 @@ public class Game {
         if (door.isLocked()) return false;
         if (currentRoom.getExits().contains(door)) {
             this.currentRoom = door.getTargetRoom();
+            return true;
         }
-        return true;
+        return false;
     }
 
     // Item van de room oppakken
