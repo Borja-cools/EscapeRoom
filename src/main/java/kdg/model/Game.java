@@ -36,7 +36,7 @@ public class Game {
 
     public Game(){}
 
-    // Methodes voor het spel te delegeren
+    // Methodes voor het spel te delegeren (Gamestate)
     public void start(){}
     public void pause(){}
     public void resume(){}
