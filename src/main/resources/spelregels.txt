@@ -1,0 +1,28 @@
+=== BUNKER-17 — SPELREGELS ===
+
+DOEL
+Je bent opgesloten in Bunker-17. Vind de uitgang voordat de tijd om is!
+
+HOE SPEEL JE?
+1. Verken de kamer: lees de beschrijving en bekijk de aanwezige items.
+2. Pak items op: selecteer een item en klik op "Oppakken".
+3. Beweeg door deuren: selecteer een uitgang in de lijst.
+   - Groene deuren zijn open, rode deuren zijn op slot.
+4. Gebruik items: selecteer een item uit je inventory en een deur,
+   klik daarna op "Gebruik item op deur" om de deur te openen.
+5. Ontsnapt? Bereik de uitgang voordat de timer afloopt!
+
+TIJD
+Je hebt 10 minuten (600 seconden) om te ontsnappen.
+De timer wordt rood als er minder dan 60 seconden over zijn.
+
+TIPS
+- Inspecteer elke kamer grondig voor je verdergaat.
+- Sommige items zijn nodig om specifieke deuren te openen.
+- Let op de namen van items — ze geven hints over welke deur ze openen.
+
+HIGHSCORES
+Na het ontsnappen wordt je tijd opgeslagen in de highscore lijst.
+Hoe sneller je ontsnapt, hoe hoger je scoort!
+
+Veel succes, agent.

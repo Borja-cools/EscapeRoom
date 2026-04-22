@@ -47,7 +47,7 @@ public class Door {
     }
 
     // volgende room opvragen
-    Room getTargetRoom(Room currentRoom) {
+    public Room getTargetRoom(Room currentRoom) {
         // bidirectioneel -
         if (currentRoom.equals(fromRoom)) return toRoom;
         if (currentRoom.equals(toRoom)) return fromRoom;

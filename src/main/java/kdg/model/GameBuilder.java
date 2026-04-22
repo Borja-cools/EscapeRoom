@@ -9,9 +9,13 @@ import java.util.List;
  *
  */
 public class GameBuilder {
-    public static Game buildGame(){
+    public static Game buildGame() {
+        return buildGame("Speler");
+    }
+
+    public static Game buildGame(String spelerNaam) {
         // ----- Items ------
-        Item zaklamp = new Item("Zaklamp_01", "Zaklampt", "Een oude zaklamp, heeft batterijen nodig om licht te geven.");
+        Item zaklamp = new Item("Zaklamp_01", "Zaklamp", "Een oude zaklamp, heeft batterijen nodig om licht te geven.");
         Item batterij = new Item("Batterij_01", "Batterij", "Een AA batterij");
         Item notitie = new Item("Notitie_01", "Notitie", "Hier kan je een aanwijzing vinden.");
         Item keykard = new Item("Keykard_01", "Keykard", "Dit is de kaard van professor Cools, geeft toegang tot het laboratorium.");
@@ -59,7 +63,7 @@ public class GameBuilder {
         controlekamer.addExit(laboNaarControle);
 
         // ------ Game ------
-        Player player = new Player("Borja");
+        Player player = new Player(spelerNaam);
         List<Room> rooms = List.of(beginKamer, gang, opslagruimte, controlekamer, labo, eindkamer);
 
         return new Game(player, rooms, beginKamer);

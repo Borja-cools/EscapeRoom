@@ -25,13 +25,13 @@ public class Item {
     }
 
     // Getter voor item
-    String getId() {
+    public String getId() {
         return id;
     }
-    String getName() {
+    public String getName() {
         return name;
     }
-    String getDescription() {
+    public String getDescription() {
         return description;
     }
 }

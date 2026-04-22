@@ -1,0 +1,27 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Run Bunker17 (JavaFX)" type="MavenRunConfiguration" factoryName="Maven">
+    <MavenSettings>
+      <option name="myGeneralSettings" />
+      <option name="myRunnerSettings" />
+      <option name="myRunnerParameters">
+        <MavenRunnerParameters>
+          <option name="profiles">
+            <set />
+          </option>
+          <option name="goals">
+            <list>
+              <option value="clean" />
+              <option value="javafx:run" />
+            </list>
+          </option>
+          <option name="pomFileName" />
+          <option name="workingDirPath" value="$PROJECT_DIR$" />
+          <option name="multimoduleDirPath" value="$PROJECT_DIR$" />
+          <option name="skipTests" value="false" />
+        </MavenRunnerParameters>
+      </option>
+    </MavenSettings>
+    <method v="2" />
+  </configuration>
+</component>
+

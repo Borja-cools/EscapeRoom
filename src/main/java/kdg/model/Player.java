@@ -42,11 +42,11 @@ public class Player {
     }
 
     // Getter
-    String getName() {
+    public String getName() {
         return name;
     }
 
-    Inventory getInventory() {
+    public Inventory getInventory() {
         return inventory;
     }
 }

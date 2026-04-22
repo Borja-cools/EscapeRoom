@@ -44,7 +44,7 @@ public class Inventory {
     }
 
     // Lijst met items teruggeven - new array aanmaken zodat array niet van buitenaf kan worden aangepast
-    List<Item> getItems() {
+    public List<Item> getItems() {
         return new ArrayList<>(this.items);
     }
 

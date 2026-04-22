@@ -82,15 +82,15 @@ public class Game {
     }
 
     // Getters voor attributen klasse
-    Room getCurrentRoom() {
+    public Room getCurrentRoom() {
         return currentRoom;
     }
 
-    Player getPlayer() {
+    public Player getPlayer() {
         return player;
     }
 
-    List<Room> getRooms() {
+    public List<Room> getRooms() {
         return rooms;
     }
 }

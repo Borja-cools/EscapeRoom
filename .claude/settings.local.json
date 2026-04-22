@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(explorer C:\\\\Users\\\\verko\\\\Desktop\\\\KDG\\\\DS2\\\\EscapeRoom:*)",
+      "Bash(export JAVA_HOME=\"/c/Program Files/Java/jdk-21\")",
+      "Bash(./mvnw.cmd clean:*)",
+      "Bash(git push *)",
+      "Bash(git add *)",
+      "Bash(git commit *)"
+    ]
+  }
+}
