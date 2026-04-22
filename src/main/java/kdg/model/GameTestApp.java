@@ -10,64 +10,7 @@ import java.util.List;
 
 public class GameTestApp {
     public static void main(String[] args) {
-
-        // Test V1.
-//        // 1. Items maken
-//        Item redKey = new Item("red_key", "Rode sleutel", "Een kleine rode sleutel.");
-//
-//        // 2. Kamers maken
-//        Room cell = new Room("Cel", "Je wordt wakker in een donkere cel.");
-//        Room hallway = new Room("Gang", "Een smalle, slecht verlichte gang.");
-//
-//        // 3. Item in kamer leggen
-//        cell.addItem(redKey);
-//
-//        // 4. Deur maken
-//        Door cellDoor = new Door(cell, hallway, true, "red_key");
-//
-//        // 5. Deur aan kamer toevoegen
-//        cell.addExit(cellDoor);
-//
-//        // 6. Player maken
-//        Player player = new Player("Borja");
-//
-//        // 7. Lijst van rooms maken
-//        List<Room> rooms = new ArrayList<>();
-//        rooms.add(cell);
-//        rooms.add(hallway);
-//
-//        // 8. Game maken
-//        Game game = new Game(player, rooms, cell);
-//
-//        // ===== TESTS =====
-//
-//        System.out.println("Current room: " + game.getCurrentRoom().getName());
-//
-//        System.out.println("Items in current room:");
-//        for (Item item : game.getCurrentRoom().getItems()) {
-//            System.out.println("- " + item.getName());
-//        }
-//
-//        System.out.println("\nPlayer picks up red key...");
-//        boolean pickedUp = game.pickupItem(redKey);
-//        System.out.println("Pickup successful? " + pickedUp);
-//
-//        System.out.println("\nPlayer inventory:");
-//        for (Item item : game.getPlayer().getInventory().getItems()) {
-//            System.out.println("- " + item.getName());
-//        }
-//
-//        System.out.println("\nTrying to unlock door with red key...");
-//        boolean unlocked = game.useItemOnDoor(redKey, cellDoor);
-//        System.out.println("Door unlocked? " + unlocked);
-//
-//        System.out.println("\nMoving through door...");
-//        game.moveThroughDoor(cellDoor);
-//        System.out.println("Current room after moving: " + game.getCurrentRoom().getName());
-
-
         // ============ Test klasse GameBuilder =================
-
         testPickupItem();
         testMoveThroughDoor();
         UseItemOnDoor();
@@ -83,6 +26,7 @@ public class GameTestApp {
         // --- Test 1: happy path ---
         // Arrange
         Game game = GameBuilder.buildGame();
+        game.start();
         Item zaklamp = game.getCurrentRoom().getItems().get(0);
         // Act
         boolean result1 = game.pickupItem(zaklamp);
@@ -106,6 +50,7 @@ public class GameTestApp {
         // --- Test 4: null ---
         // Arrange
         Game game2 = GameBuilder.buildGame();
+        game2.start();
         // Act
         boolean result4 = game2.pickupItem(null);
         // Assert
@@ -114,6 +59,7 @@ public class GameTestApp {
         // --- Test 5: item niet in huidige room ---
         // Arrange
         Game game3 = GameBuilder.buildGame();
+        game3.start();
         Item foutItem = new Item("fout_01", "Fout Item", "Dit item zit niet in de room");
         // Act
         boolean result5 = game3.pickupItem(foutItem);
@@ -130,6 +76,7 @@ public class GameTestApp {
         // --- Test 1: happy path open deur ---
         // Arrange
         Game game = GameBuilder.buildGame();
+        game.start();
         Door startNaarGang = game.getCurrentRoom().getExits().get(0);
         // Act
         boolean result1 = game.moveThroughDoor(startNaarGang);
@@ -148,6 +95,7 @@ public class GameTestApp {
         // --- Test 3: null ---
         // Arrange
         Game game2 = GameBuilder.buildGame();
+        game2.start();
         // Act
         boolean result3 = game2.moveThroughDoor(null);
         // Assert
@@ -156,6 +104,7 @@ public class GameTestApp {
         // --- Test 4: gesloten deur ---
         // Arrange
         Game game3 = GameBuilder.buildGame();
+        game3.start();
         Door startNaarGang3 = game3.getCurrentRoom().getExits().get(0);
         game3.moveThroughDoor(startNaarGang3); // naar gang
         Door gangNaarOpslag = game3.getCurrentRoom().getExits().get(0); // gesloten
@@ -167,6 +116,7 @@ public class GameTestApp {
         // --- Test 5: deur hoort niet bij huidige kamer ---
         // Arrange
         Game game4 = GameBuilder.buildGame();
+        game4.start();
         Door startNaarGang4 = game4.getCurrentRoom().getExits().get(0);
         game4.moveThroughDoor(startNaarGang4); // naar gang
         Door gangNaarLabo = game4.getCurrentRoom().getExits().get(1); // deur van gang, niet van beginkamer
@@ -186,6 +136,7 @@ public class GameTestApp {
         // --- Test 1: null item ---
         // Arrange
         Game game = GameBuilder.buildGame();
+        game.start();
         Door startNaarGang = game.getCurrentRoom().getExits().get(0);
         game.moveThroughDoor(startNaarGang);
         Door gangNaarOpslag = game.getCurrentRoom().getExits().get(0);
@@ -197,6 +148,7 @@ public class GameTestApp {
         // --- Test 2: null deur ---
         // Arrange
         Game game2 = GameBuilder.buildGame();
+        game2.start();
         Item zaklamp2 = game2.getCurrentRoom().getItems().get(0);
         game2.pickupItem(zaklamp2);
         // Act
@@ -207,6 +159,7 @@ public class GameTestApp {
         // --- Test 3: fout item op gesloten deur ---
         // Arrange
         Game game3 = GameBuilder.buildGame();
+        game3.start();
         Item batterij = game3.getCurrentRoom().getItems().get(1);
         game3.pickupItem(batterij);
         Door startNaarGang3 = game3.getCurrentRoom().getExits().get(0);
@@ -220,6 +173,7 @@ public class GameTestApp {
         // --- Test 4: juist item op gesloten deur ---
         // Arrange
         Game game4 = GameBuilder.buildGame();
+        game4.start();
         Item zaklamp4 = game4.getCurrentRoom().getItems().get(0);
         game4.pickupItem(zaklamp4);
         Door startNaarGang4 = game4.getCurrentRoom().getExits().get(0);
@@ -240,6 +194,7 @@ public class GameTestApp {
         // --- Test 6: item niet in inventory ---
         // Arrange
         Game game5 = GameBuilder.buildGame();
+        game5.start();
         Door startNaarGang5 = game5.getCurrentRoom().getExits().get(0);
         game5.moveThroughDoor(startNaarGang5);
         Door gangNaarOpslag5 = game5.getCurrentRoom().getExits().get(0);

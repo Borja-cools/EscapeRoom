@@ -13,6 +13,9 @@ public class Game {
     private List<Room> rooms;
     private Room currentRoom;
 
+    private GameState gameState; // huidige gameState
+    private Room winRoom; // Welke room is de uitgang
+
     // Constructor
     public Game(Player player, List<Room> rooms, Room currentRoom) {
         // Checks
@@ -32,20 +35,44 @@ public class Game {
         this.player = player;
         this.rooms = rooms;
         this.currentRoom = currentRoom;
+        this.gameState = GameState.MENU; // start altijd in menu
     }
 
     public Game(){}
 
     // Methodes voor het spel te delegeren (Gamestate)
-    public void start(){}
-    public void pause(){}
-    public void resume(){}
+    public void start(){
+        if (gameState == GameState.MENU) {
+            this.gameState = GameState.PLAYING;
+        }
+    }
+    public void pause(){
+        if (gameState == GameState.PLAYING) {
+            this.gameState = GameState.PAUSED;
+        }
+    }
+    public void resume(){
+        if (gameState == GameState.PAUSED) {
+            this.gameState = GameState.PLAYING;
+        }
+    }
+    public void win(){
+        if (gameState == GameState.PLAYING) {
+            this.gameState = GameState.WON;
+        }
+    }
+    public void lose(){
+        if (gameState == GameState.PLAYING) {
+            this.gameState = GameState.LOST;
+        }
+    }
+
+    // Nog te implementeren
     public void stop(){}
-    public void win(){}
-    public void lose(){}
 
     // Deur die de kamers verbindt gebruiken -> volgende room
     public boolean moveThroughDoor(Door door){
+        if (gameState != GameState.PLAYING) return false;
         if (door == null) return false;
         if (door.isLocked()) return false;
         if (currentRoom.getExits().contains(door)) {
@@ -58,6 +85,7 @@ public class Game {
     // Item van de room oppakken
     public boolean pickupItem(Item item){
         // check
+        if (gameState != GameState.PLAYING) return false;
         if(item == null) return false;
         // check of speler al item heeft
         if(player.hasItem(item)) return false;
@@ -73,6 +101,7 @@ public class Game {
 
     // Item op een deur gebruiken
     public boolean useItemOnDoor(Item item, Door door){
+        if (gameState != GameState.PLAYING) return false;
         // Check input geldig
         if(item == null || door == null) return false;
         // Check of player item heeft
