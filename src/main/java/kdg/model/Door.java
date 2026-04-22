@@ -9,10 +9,10 @@ import java.util.Objects;
  */
 public class Door {
     // Attributen klasse
-    private Room fromRoom;
-    private Room toRoom;
+    private final Room fromRoom;
+    private final Room toRoom;
     private boolean locked;
-    private String requiredItemId;
+    private final String requiredItemId;
 
     // Constructor
     public Door(Room fromRoom, Room toRoom, boolean locked, String requiredItemId) {
@@ -37,7 +37,7 @@ public class Door {
 
     // Deur openen met Item
     public boolean unlock(String itemId) {
-        // requiredItemId != null -> nagaan of deur wel een sleutel nodig heeft. voorkomt crash
+        // requiredItemId!= null -> nagaan of deur wel een sleutel nodig heeft. voorkomt crash
         // isLocked -> checken of de deur nog op slot is
         if (locked && requiredItemId != null && requiredItemId.equals(itemId)) {
             locked = false;
